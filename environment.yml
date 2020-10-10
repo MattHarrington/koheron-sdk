@@ -2,9 +2,9 @@ name: koheron
 channels:
   - conda-forge
 dependencies:
-  - python=3.6
-  - numpy=1.12.1
+  - python
+  - numpy
   - jinja2
   - requests
   - pyyaml
-  - cppheaderparser=2.7.4
+  - cppheaderparser
