@@ -29,7 +29,7 @@ class FFT
     , demod_map(ctx.mm.get<mem::demod>())
     , clk_gen(ctx.get<ClockGenerator>())
     , ltc2157(ctx.get<Ltc2157>())
-    , ycscratch(ctx.mm.get<mem::ycscratch())
+    , ycscratch(ctx.mm.get<mem::ycscratch>())
     {
         set_input_channel(0);
         set_scale_sch(0);
