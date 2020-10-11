@@ -44,7 +44,7 @@ class FFT
         ycscratch.write_array(data);
     }
 
-    auto get_ycscratch() const {
+    std::array<uint32_t,256> get_ycscratch() const {
         return ycscratch.read_array<uint32_t, 256>();
     }
 
