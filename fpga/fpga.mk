@@ -52,12 +52,9 @@ $(TMP_FPGA_PATH)/$(NAME).xpr: $(CONFIG_TCL) $(XDC) $(PROJECT_PATH)/*.tcl $(CORES
 .PHONY: fpga
 fpga: $(BITSTREAM)
 
-# $(BITSTREAM): $(TMP_FPGA_PATH)/$(NAME).xpr | $(TMP_FPGA_PATH)
-# 	$(VIVADO_BATCH) -source $(FPGA_PATH)/vivado/bitstream.tcl -tclargs $< $@ $(N_CPUS)
-# 	@echo [$@] OK
-$(BITSTREAM): $(PROJECT_PATH)/fft.bit | $(TMP_FPGA_PATH)
-     cp fft.bit $(BITSTREAM)
-     @echo [$@] OK
+$(BITSTREAM): $(TMP_FPGA_PATH)/$(NAME).xpr | $(TMP_FPGA_PATH)
+	$(VIVADO_BATCH) -source $(FPGA_PATH)/vivado/bitstream.tcl -tclargs $< $@ $(N_CPUS)
+	@echo [$@] OK
 
 $(TMP_FPGA_PATH)/$(NAME).hwdef: $(TMP_FPGA_PATH)/$(NAME).xpr | $(TMP_FPGA_PATH)
 	$(VIVADO_BATCH) -source $(FPGA_PATH)/vivado/hwdef.tcl -tclargs $(TMP_FPGA_PATH)/$(NAME).xpr $(TMP_FPGA_PATH)/$(NAME).hwdef $(N_CPUS)
